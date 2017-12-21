@@ -27,11 +27,10 @@ public class ItemDao implements Items {
 
     }
 
-    @Override
     public ArrayList<Item> getAllItems() {
 
         String selectQuery = "SELECT * FROM items";
-        ArrayList<Item> items = new ArrayList<>();
+        ArrayList<Item> items = new ArrayList();
         try {
             PreparedStatement ps = connection.prepareStatement(selectQuery);
             ResultSet rs = ps.executeQuery();
@@ -44,7 +43,6 @@ public class ItemDao implements Items {
         return items;
     }
 
-    @Override
     public boolean deleteItem(long id) {
         String deleteQuery = "DELETE FROM items WHERE id = ?";
         boolean itemDeleted = false;
@@ -58,7 +56,6 @@ public class ItemDao implements Items {
         return itemDeleted;
     }
 
-    @Override
     public long updateItem(Item item) {
         String updateQuery = "UPDATE items SET name = ? WHERE id = ?";
         long numberOfRowsAffected = 0;
@@ -73,7 +70,6 @@ public class ItemDao implements Items {
         return numberOfRowsAffected;
     }
 
-    @Override
     public long createItem(Item item) {
         String insertQuery = "INSERT INTO items (name) VALUES (?)";
         long lastInsertId = 0;
@@ -91,7 +87,6 @@ public class ItemDao implements Items {
         return lastInsertId;
     }
 
-    @Override
     public Item findItemById(long id) {
         String selectQuery = "SELECT * FROM items WHERE id = ?";
         Item result = null;
