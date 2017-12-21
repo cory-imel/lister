@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS lister_db;
+
 USE lister_db;
 
 DROP TABLE IF EXISTS items;
